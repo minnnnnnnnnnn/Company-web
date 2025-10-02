@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>회사 관리 시스템</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="menu">
+            <a href="index.html">등록</a>
+            <a href="check.html">조회</a>
+        </div>
+    </div>
+
+    <div class="button">
+        <div class="icon-text">
+            <img src="team_icon.png" width="70" height="70">
+            <p>팀 등록</p>
+        </div>
+        <input type="text" placeholder="팀 이름" style="margin-bottom: 10px">
+        <br/>
+        <button>팀 등록</button>
+    </div>
+
+    <div class="button">
+        <div class="icon-text">
+            <img src="user_icon.png" width="40" height="40">
+            <p>직원 등록</p>
+        </div>
+        <input type="text" placeholder="직원 이름" style="margin-bottom: 10px"></br>
+        <select style="margin-bottom: 10px">
+            <option value="">직책</option>
+            <option value="manager">매니저</option>
+            <option value="employee">직원</option>
+        </select>
+        </br>
+        <div class="form-group">
+            <label for="joinDate" class="small-label">회사 입사일</label>
+            <input type="date" id="joinDate" name="joinDate" style="margin-bottom: 10px"></br>
+        </div>
+        <div class="form-group">
+            <label for="birthDate" class="small-label">생일</label>
+            <input type="date" id="birthDate" name="birthDate" style="margin-bottom: 10px">
+        </div>
+        <br/>
+        <button>직원 등록</button>
+    </div>
+
+
+</body>
+
+</html>
