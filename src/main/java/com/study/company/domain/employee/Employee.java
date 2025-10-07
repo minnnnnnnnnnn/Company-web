@@ -41,5 +41,27 @@ public class Employee {
         this.birthDate = birth_date;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public LocalDate getJoinDate() {
+        return joinDate;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public long getTeam_id() {
+        return team_id;
+    }
 }

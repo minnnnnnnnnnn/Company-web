@@ -1,9 +1,6 @@
 package com.study.company.domain.Team;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -16,10 +13,27 @@ public class Team {
     private Long id = null;
 
     private String name;
+
     private Long managerId = null;
     private int employeeNum = 0;
 
     public Team(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getManagerId() {
+        return managerId;
+    }
+
+    public int getEmployeeNum() {
+        return employeeNum;
     }
 }

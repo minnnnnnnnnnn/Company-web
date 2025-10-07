@@ -3,8 +3,12 @@ package com.study.company.service.team;
 import com.study.company.domain.Team.Team;
 import com.study.company.domain.Team.TeamRepository;
 import com.study.company.dto.team.request.TeamCreateRequest;
+import com.study.company.dto.team.request.response.TeamResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TeamService {
@@ -18,6 +22,13 @@ public class TeamService {
     @Transactional
     public void saveTeam(TeamCreateRequest request) {
         teamRepository.save(new Team(request.getName()));
+    }
+
+    @Transactional(readOnly = true)
+    public List<TeamResponse> getTeams() {
+        return teamRepository.findAll().stream()
+                .map(TeamResponse::new)
+                .collect(Collectors.toList());
     }
 
 }
