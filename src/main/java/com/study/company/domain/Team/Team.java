@@ -1,5 +1,6 @@
 package com.study.company.domain.Team;
 
+import com.study.company.domain.employee.Employee;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,10 @@ public class Team {
 
     private String name;
 
-    private Long managerId = null;
+    @OneToOne
+    @JoinColumn(name = "manager_id")
+    private Employee manager;
+
     private int employeeNum = 0;
 
     public Team(String name) {
@@ -29,11 +33,19 @@ public class Team {
         return name;
     }
 
-    public Long getManagerId() {
-        return managerId;
+    public Employee getManager() {
+        return manager;
     }
 
     public int getEmployeeNum() {
         return employeeNum;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
+    }
+
+    public void increaseEmployeeNum() {
+        this.employeeNum++;
     }
 }

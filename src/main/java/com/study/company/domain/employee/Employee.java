@@ -1,5 +1,6 @@
 package com.study.company.domain.employee;
 
+import com.study.company.domain.Team.Team;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,16 @@ public class Employee {
     private LocalDate joinDate;
     private LocalDate birthDate;
 
-    private long team_id;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
-    public Employee(String name, String role, LocalDate joinDate, LocalDate birth_date) {
+    public Employee(String name, Team team, String role, LocalDate joinDate, LocalDate birth_date) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("이름이 비어있습니다.");
+        }
+        if (team == null) {
+            throw new IllegalArgumentException("소속 팀 이름이 비어있습니다.");
         }
         if (role == null || role.isBlank()) {
             throw new IllegalArgumentException("직책이 비어있습니다.");
@@ -36,6 +42,7 @@ public class Employee {
             throw new IllegalArgumentException("생년월일이 비어있습니다.");
         }
         this.name = name;
+        this.team = team;
         this.role = role;
         this.joinDate = joinDate;
         this.birthDate = birth_date;
@@ -61,7 +68,7 @@ public class Employee {
         return birthDate;
     }
 
-    public long getTeam_id() {
-        return team_id;
+    public Team getTeam() {
+        return team;
     }
 }

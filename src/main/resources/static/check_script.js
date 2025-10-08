@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.innerHTML = `
                     <td>${team.name || ''}</td>
                     <td>${team.managerName || ''}</td>
-                    <td>${team.memberCount || 0}</td>
+                    <td>${team.employeeNum || 0}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.innerHTML = `
                     <td>${emp.name || ''}</td>
                     <td>${emp.teamName || ''}</td>
-                    <td>${emp.position || ''}</td>
+                    <td>${emp.role || ''}</td>
                     <td>${birth}</td>
                     <td>${join}</td>
                 `;

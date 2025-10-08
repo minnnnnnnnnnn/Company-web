@@ -1,5 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // 팀 조회
+    const teamSelect = document.getElementById('teamSelect');
+
+        fetch('http://localhost:8080/team')
+            .then(response => response.json())
+            .then(data => {
+                teamSelect.innerHTML = '<option value="">소속 팀 이름</option>'; // 기본 옵션
+                data.forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.id;
+                    option.textContent = team.name;
+                    teamSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('팀 목록 불러오기 오류:', error);
+            });
+
     // 팀 등록
     document.getElementById('registerTeamBtn').addEventListener('click', function() {
         const name = document.querySelector('input[placeholder="팀 이름"]').value;
@@ -27,11 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 직원 등록
     document.getElementById('registerEmployeeBtn').addEventListener('click', function() {
         const name = document.querySelector('input[placeholder="직원 이름"]').value;
-        const role = document.querySelector('select').value;
+        const teamId = document.getElementById('teamSelect').value;
+        const role = document.getElementById('roleSelect').value;
         const joinDate = document.getElementById('joinDate').value;
         const birthDate = document.getElementById('birthDate').value;
 
-        if (!name || !role || !joinDate || !birthDate) {
+        if (!name || ! teamId || !role || !joinDate || !birthDate) {
             alert('모든 항목을 입력해주세요.');
             return;
         }
@@ -39,13 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('http://localhost:8080/employee', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, role, joinDate, birthDate })
+            body: JSON.stringify({ name, teamId, role, joinDate, birthDate })
         })
         .then(response => {
             if (!response.ok) throw new Error('직원 등록 실패');
             alert('직원 등록 성공!');
             document.querySelector('input[placeholder="직원 이름"]').value = '';
-            document.querySelector('select').value = '';
+            document.getElementById('teamSelect').value = '';
+            document.getElementById('roleSelect').value = '';
             document.getElementById('joinDate').value = '';
             document.getElementById('birthDate').value = '';
         })

@@ -7,23 +7,17 @@ public class TeamResponse {
     private long id;
     private String name;
     private long managerId;
+    private String managerName;
     private Integer employeeNum;
-
-    public TeamResponse(long id, String name, long managerId, Integer employeeNum) {
-        this.id = id;
-        this.name = name;
-        this.managerId = managerId;
-        this.employeeNum = employeeNum;
-    }
 
     public TeamResponse(Team team) {
         this.id = team.getId();
         this.name = team.getName();
-        this.managerId = (team.getManagerId() != null) ? team.getManagerId() : 0L;
+        this.managerId = (team.getManager() != null) ? team.getManager().getId() : 0L;
+        this.managerName = (team.getManager() != null) ? team.getManager().getName() : "";
         this.employeeNum = team.getEmployeeNum();
     }
-
-
+    
     public long getId() {
         return id;
     }
@@ -38,5 +32,9 @@ public class TeamResponse {
 
     public Integer getEmployeeNum() {
         return employeeNum;
+    }
+
+    public String getManagerName() {
+        return managerName;
     }
 }

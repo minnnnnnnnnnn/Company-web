@@ -8,27 +8,20 @@ public class EmployeeResponse {
 
     private long id;
     private String name;
+    private String teamName;
     private String role;
     private LocalDate joinDate;
     private LocalDate birthDate;
     private long team_id;
 
-    public EmployeeResponse(long id, String name, String role, LocalDate joinDate, LocalDate birthDate, long team_id) {
-        this.id = id;
-        this.name = name;
-        this.role = role;
-        this.joinDate = joinDate;
-        this.birthDate = birthDate;
-        this.team_id = team_id;
-    }
-
     public EmployeeResponse(Employee employee) {
         this.id = employee.getId();
         this.name = employee.getName();
+        this.teamName = employee.getTeam() != null ? employee.getTeam().getName() : "";
         this.role = employee.getRole();
         this.joinDate = employee.getJoinDate();
         this.birthDate = employee.getBirthDate();
-        this.team_id = employee.getTeam_id();;
+        this.team_id = employee.getTeam().getId();
     }
 
     public long getId() {
@@ -37,6 +30,10 @@ public class EmployeeResponse {
 
     public String getName() {
         return name;
+    }
+
+    public String getTeamName() {
+        return teamName;
     }
 
     public String getRole() {
