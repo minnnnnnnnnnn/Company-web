@@ -1,7 +1,7 @@
 package com.study.company.service.team;
 
-import com.study.company.domain.Team.Team;
-import com.study.company.domain.Team.TeamRepository;
+import com.study.company.domain.team.Team;
+import com.study.company.domain.team.TeamRepository;
 import com.study.company.dto.team.request.TeamCreateRequest;
 import com.study.company.dto.team.request.response.TeamResponse;
 import org.springframework.stereotype.Service;

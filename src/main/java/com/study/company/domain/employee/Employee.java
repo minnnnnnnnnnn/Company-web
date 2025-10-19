@@ -1,6 +1,6 @@
 package com.study.company.domain.employee;
 
-import com.study.company.domain.Team.Team;
+import com.study.company.domain.team.Team;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

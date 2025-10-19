@@ -75,4 +75,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // 직원 조회
+        const startSelect = document.getElementById('startSelect');
+
+            fetch('http://localhost:8080/employee')
+                .then(response => response.json())
+                .then(data => {
+                    startSelect.innerHTML = '<option value="">이름</option>'; // 기본 옵션
+                    data.forEach(employee => {
+                        const option = document.createElement('option');
+                        option.value = employee.id;
+                        option.textContent = employee.name;
+                        startSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('직원 목록 불러오기 오류:', error);
+                });
+
+
+    // 출근 처리
+    document.getElementById('startBtn').addEventListener('click', function() {
+        const employeeId = document.getElementById('startSelect').value;
+
+        if (!employeeId) {
+            alert('직원을 선택해주세요.');
+            return;
+        }
+
+        fetch('http://localhost:8080/employee/checkIn', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ employeeId: Number(employeeId) })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('출근 처리 실패');
+            alert('출근 처리 완료!');
+            document.getElementById('startSelect').value = ''; // 선택 초기화
+        })
+        .catch(error => {
+            console.error(error);
+            alert('출근 처리 중 오류가 발생했습니다.');
+        });
+    });
+
 });

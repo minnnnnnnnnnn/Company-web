@@ -1,4 +1,4 @@
-package com.study.company.domain.Team;
+package com.study.company.domain.team;
 
 import com.study.company.domain.employee.Employee;
 import jakarta.persistence.*;

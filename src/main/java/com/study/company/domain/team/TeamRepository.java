@@ -1,4 +1,4 @@
-package com.study.company.domain.Team;
+package com.study.company.domain.team;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

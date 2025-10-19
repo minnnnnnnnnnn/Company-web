@@ -1,5 +1,6 @@
 package com.study.company.controller.employee;
 
+import com.study.company.dto.employee.request.EmployeeCheckInRequest;
 import com.study.company.dto.employee.request.EmployeeCreateRequest;
 import com.study.company.dto.employee.request.response.EmployeeResponse;
 import com.study.company.service.employee.EmployeeService;
@@ -27,6 +28,11 @@ public class EmployeeController {
     @GetMapping("/employee")
     public List<EmployeeResponse> getEmployees() {
         return employeeService.getEmployees();
+    }
+
+    @PostMapping("/employee/checkIn")
+    public void checkIn(@RequestBody EmployeeCheckInRequest request) {
+        employeeService.checkIn(request);
     }
 
 }

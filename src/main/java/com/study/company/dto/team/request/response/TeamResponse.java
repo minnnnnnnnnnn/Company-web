@@ -1,6 +1,6 @@
 package com.study.company.dto.team.request.response;
 
-import com.study.company.domain.Team.Team;
+import com.study.company.domain.team.Team;
 
 public class TeamResponse {
 
