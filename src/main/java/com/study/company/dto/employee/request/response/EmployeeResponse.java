@@ -13,6 +13,7 @@ public class EmployeeResponse {
     private LocalDate joinDate;
     private LocalDate birthDate;
     private long team_id;
+    private Long totalWork = 0L;
 
     public EmployeeResponse(Employee employee) {
         this.id = employee.getId();

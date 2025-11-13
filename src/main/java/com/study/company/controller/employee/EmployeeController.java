@@ -1,6 +1,8 @@
 package com.study.company.controller.employee;
 
+import com.study.company.domain.employee.Employee;
 import com.study.company.dto.employee.request.EmployeeCheckInRequest;
+import com.study.company.dto.employee.request.EmployeeCheckOutRequest;
 import com.study.company.dto.employee.request.EmployeeCreateRequest;
 import com.study.company.dto.employee.request.response.EmployeeResponse;
 import com.study.company.service.employee.EmployeeService;
@@ -33,6 +35,15 @@ public class EmployeeController {
     @PostMapping("/employee/checkIn")
     public void checkIn(@RequestBody EmployeeCheckInRequest request) {
         employeeService.checkIn(request);
+    }
+    @GetMapping("/employee/checkIn")
+    public List<EmployeeResponse> getCheckInEmployees() {
+        return employeeService.getCheckInEmployees();
+    }
+
+    @PostMapping("/employee/checkOut")
+    public void checkOut(@RequestBody EmployeeCheckOutRequest request) {
+        employeeService.checkOut(request);
     }
 
 }

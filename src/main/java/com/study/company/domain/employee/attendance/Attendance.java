@@ -19,8 +19,7 @@ public class Attendance {
     private LocalDate workDate;
     private LocalDateTime checkIn;
     private LocalDateTime checkOut;
-    private Integer dailyWork;
-    private Long totalWork;
+    private Long dailyWork;
 
     public Attendance(Employee employee, LocalDate workDate, LocalDateTime checkIn) {
         this.employee = employee;
@@ -28,4 +27,26 @@ public class Attendance {
         this.checkIn = checkIn;
     }
 
+    public Attendance() {
+    }
+
+    public LocalDateTime getCheckIn() {
+        return checkIn;
+    }
+
+    public LocalDateTime getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(LocalDateTime checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public void setDailyWork(Long dailyWork) {
+        this.dailyWork = dailyWork;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
 }

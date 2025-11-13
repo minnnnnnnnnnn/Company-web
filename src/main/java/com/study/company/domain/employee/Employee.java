@@ -20,6 +20,7 @@ public class Employee {
     private String role;
     private LocalDate joinDate;
     private LocalDate birthDate;
+    private Long totalWork = 0L;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
@@ -70,5 +71,13 @@ public class Employee {
 
     public Team getTeam() {
         return team;
+    }
+
+    public Long getTotalWork() {
+        return totalWork;
+    }
+
+    public void setTotalWork(Long totalWork) {
+        this.totalWork = totalWork;
     }
 }
